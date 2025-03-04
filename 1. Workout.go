@@ -11,24 +11,12 @@ func Workout(bot *tgbotapi.BotAPI, update tgbotapi.Update, updates tgbotapi.Upda
     chatID := update.Message.Chat.ID
     msg := tgbotapi.NewMessage(chatID, "Выберите, что вы хотите сделать:")
     buttons := tgbotapi.NewReplyKeyboard(
-        tgbotapi.NewKeyboardButtonRow(
-            tgbotapi.NewKeyboardButton("Подтягивания"),
-        ),
-		tgbotapi.NewKeyboardButtonRow(
-            tgbotapi.NewKeyboardButton("Отжимания на брусьях"),
-        ),
-		tgbotapi.NewKeyboardButtonRow(
-            tgbotapi.NewKeyboardButton("Классический жим лёжа"),
-        ),
-        tgbotapi.NewKeyboardButtonRow(
-            tgbotapi.NewKeyboardButton("Отжимания от пола"),
-        ),
-		tgbotapi.NewKeyboardButtonRow(
-            tgbotapi.NewKeyboardButton("Пресс"),
-        ),
-        tgbotapi.NewKeyboardButtonRow(
-            tgbotapi.NewKeyboardButton("Назад"),
-        ),
+        tgbotapi.NewKeyboardButtonRow(tgbotapi.NewKeyboardButton("Подтягивания"),),
+        tgbotapi.NewKeyboardButtonRow(tgbotapi.NewKeyboardButton("Отжимания на брусьях"),),
+		tgbotapi.NewKeyboardButtonRow(tgbotapi.NewKeyboardButton("Классический жим лёжа"),),
+        tgbotapi.NewKeyboardButtonRow(tgbotapi.NewKeyboardButton("Отжимания от пола"),),
+		tgbotapi.NewKeyboardButtonRow(tgbotapi.NewKeyboardButton("Пресс"),),
+        tgbotapi.NewKeyboardButtonRow(tgbotapi.NewKeyboardButton("Назад"),),
     )
     msg.ReplyMarkup = buttons
     if _, err := bot.Send(msg); err != nil {
@@ -43,16 +31,16 @@ func Workout(bot *tgbotapi.BotAPI, update tgbotapi.Update, updates tgbotapi.Upda
         log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
 
         switch update.Message.Text {
-        case "Подтягивания":
-			Pull_ups(bot, update, updates)
-        case "Отжимания на брусьях":
-			Push_ups_on_the_bars(bot, update, updates)
-        case "Классический жим лёжа":
-			Classic_bench_press(bot, update, updates)
+        // case "Подтягивания":
+		// 	Pull_ups(bot, update, updates)
+        // case "Отжимания на брусьях":
+		// 	Push_ups_on_the_bars(bot, update, updates)
+        // case "Классический жим лёжа":
+		// 	Classic_bench_press(bot, update, updates)
         case "Отжимания от пола": // +++++++++++++++++++++++++++=
 			Push_ups_from_the_floor(bot, update, updates)
-        case "Пресс":
-			Press(bot, update, updates)
+        // case "Пресс":
+		// 	Press(bot, update, updates)
         case "Назад":
             Main_menu(bot, update, updates)
         default:
