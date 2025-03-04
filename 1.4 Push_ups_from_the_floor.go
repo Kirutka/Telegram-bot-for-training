@@ -2,7 +2,78 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"strconv"
+
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
+
+func Push_ups_from_the_floor(bot *tgbotapi.BotAPI, update tgbotapi.Update, updates tgbotapi.UpdatesChannel) { // ОТЖИМАНИЯ ОТ ПОЛА
+	msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Отжимания от пола. Введите максимальное количество за раз:")
+	buttons := tgbotapi.NewReplyKeyboard(
+		tgbotapi.NewKeyboardButtonRow(
+			tgbotapi.NewKeyboardButton("Назад"),
+		),
+	)
+	msg.ReplyMarkup = buttons
+	_, err := bot.Send(msg)
+	if err != nil {
+		log.Panic(err)
+	}
+
+    for {
+        update := <-updates
+        if update.Message == nil {
+            break
+        }
+        if update.Message.Text == "Назад"{
+            Workout(bot, update, updates)
+        }
+        userCount, err := strconv.Atoi(update.Message.Text)
+        if userCount < 0 || err != nil{
+            msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Введите положительное, целое число")
+            _, err = bot.Send(msg)
+            if err != nil {
+            log.Panic(err)
+            } 
+        } else {
+    count := Push_ups_from_the_floor_CAL(userCount)
+    msg = tgbotapi.NewMessage(update.Message.Chat.ID, count)
+    buttons := tgbotapi.NewReplyKeyboard(
+        tgbotapi.NewKeyboardButtonRow(
+            tgbotapi.NewKeyboardButton("Назад"),
+        ),
+		tgbotapi.NewKeyboardButtonRow(
+			tgbotapi.NewKeyboardButton("Главное меню"),
+		),
+    )
+    msg.ReplyMarkup = buttons
+    _, err := bot.Send(msg)
+    if err != nil {
+        log.Panic(err)
+    }
+        log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
+        for update := range updates {
+            if update.Message == nil {
+                continue
+            }
+            user := update.Message.Text
+            switch user {
+            case "Назад":
+                Workout(bot, update, updates)
+			case "Главное меню":
+				Main_menu(bot, update, updates)
+            default:
+                msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Нет такого варианта ответа")
+                _, err := bot.Send(msg)
+                if err != nil {
+                log.Panic(err)
+                }
+                }
+            }
+        }
+    }
+}
 
 func Push_ups_from_the_floor_CAL(userCount int) string {
     razdo5 := fmt.Sprintf("Каждая отдельная цифра это подход. Допустим запись (2 3 4) означает сделать 2 повторения, потом 3, потом 4. Отдыхайте 2-3 минуты между подходами. \nВот ваша программа тренировок: \n" + "\n" + "## 1 Неделя" + "\n" + 

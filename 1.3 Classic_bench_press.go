@@ -9,11 +9,11 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
-func ClassGym(bot *tgbotapi.BotAPI, update tgbotapi.Update, updates tgbotapi.UpdatesChannel) { // классический жим лёжа
-    msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Введите свой максимальный жим на раз: ")
+func Classic_bench_press(bot *tgbotapi.BotAPI, update tgbotapi.Update, updates tgbotapi.UpdatesChannel) { // КЛАССИЧЕСКИЙ ЖИМ ЛЁЖА
+    msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Классический жим лёжа. Введите свой максимальный жим на раз: ")
     buttons := tgbotapi.NewReplyKeyboard(
         tgbotapi.NewKeyboardButtonRow(
-            tgbotapi.NewKeyboardButton("⬅️ Назад"),
+            tgbotapi.NewKeyboardButton("Назад"),
         ),
     )
     msg.ReplyMarkup = buttons
