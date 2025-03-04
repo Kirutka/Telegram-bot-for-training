@@ -49,9 +49,9 @@ func Calculators(bot *tgbotapi.BotAPI, update tgbotapi.Update, updates tgbotapi.
 
 		switch update.Message.Text {
 		case "КБЖУ":
-			Main_menu(bot, update, updates)
+			RasKBZU(bot, update, updates)
 		case "Индекс массы тела":
-			Main_menu(bot, update, updates)
+			BodyWeightIndex(bot, update, updates)
 		case "Норма воды":
 			Main_menu(bot, update, updates)
 		case "Калории за пробежку":
