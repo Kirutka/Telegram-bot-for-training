@@ -41,8 +41,8 @@ func Progress(bot *tgbotapi.BotAPI, update tgbotapi.Update, updates tgbotapi.Upd
 				log.Println("Error sending message:", err)
 			}
 			continue
-			// case "Связь с поддержкой":
-			// 	Support_communication(bot, update, updates)
+		// case "Связь с поддержкой":
+		// 	Support_communication(bot, update, updates)
 		case "Назад":
 			Main_menu(bot, update, updates)
 		default:
