@@ -9,7 +9,7 @@ import (
 )
 
 // BodyWeightIndex - Главная функция для расчета ИМТ
-func BodyWeightIndex(bot *tgbotapi.BotAPI, update tgbotapi.Update, updates tgbotapi.UpdatesChannel) {
+func Body_Weight_Index(bot *tgbotapi.BotAPI, update tgbotapi.Update, updates tgbotapi.UpdatesChannel) {
     chatID := update.Message.Chat.ID
 
     // Запрашиваем вес
