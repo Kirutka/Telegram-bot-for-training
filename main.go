@@ -52,7 +52,7 @@ func Main_menu(bot *tgbotapi.BotAPI, update tgbotapi.Update, updates tgbotapi.Up
 			tgbotapi.NewKeyboardButton("Калькуляторы"),
 		),
 		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Прогресс"),
+			tgbotapi.NewKeyboardButton("Информация об упражнениях"),
 			tgbotapi.NewKeyboardButton("Помощь"),
 		),
 	)
@@ -71,8 +71,8 @@ func Main_menu(bot *tgbotapi.BotAPI, update tgbotapi.Update, updates tgbotapi.Up
 				Workout(bot, update, updates)
 			case "Калькуляторы":
 				Calculators(bot, update, updates)
-			case "Прогресс":
-				Progress(bot, update, updates)
+			case "Информация об упражнениях":
+				Information_about_exercises(bot, update, updates)
 			case "Помощь":
 				Help(bot, update, updates)
 			default:
