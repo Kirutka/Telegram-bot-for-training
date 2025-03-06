@@ -55,7 +55,7 @@ func Calculators(bot *tgbotapi.BotAPI, update tgbotapi.Update, updates tgbotapi.
 		case "Норма воды":
 			The_norm_of_water(bot, update, updates) // ГОТОВО
 		case "Калории за пробежку":
-			Main_menu(bot, update, updates)
+			Calories_for_a_run(bot, update, updates) // ГОТОВО
 		case "Процент жира":
 			Main_menu(bot, update, updates)
 		case "Спортивные разряды":
