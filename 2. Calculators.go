@@ -23,12 +23,6 @@ func Calculators(bot *tgbotapi.BotAPI, update tgbotapi.Update, updates tgbotapi.
 			tgbotapi.NewKeyboardButton("Калории за пробежку"),
 		),
 		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Процент жира"),
-		),
-		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("Спортивные разряды"),
-		),
-		tgbotapi.NewKeyboardButtonRow(
 			tgbotapi.NewKeyboardButton("ГТО"),
 		),
 		tgbotapi.NewKeyboardButtonRow(
@@ -56,12 +50,8 @@ func Calculators(bot *tgbotapi.BotAPI, update tgbotapi.Update, updates tgbotapi.
 			The_norm_of_water(bot, update, updates) // ГОТОВО
 		case "Калории за пробежку":
 			Calories_for_a_run(bot, update, updates) // ГОТОВО
-		case "Процент жира":
-			Main_menu(bot, update, updates)
-		case "Спортивные разряды":
-			Main_menu(bot, update, updates)
 		case "ГТО":
-			Main_menu(bot, update, updates)
+			GTO(bot, update, updates)
 		case "Назад":
 			Main_menu(bot, update, updates)
 		default:
